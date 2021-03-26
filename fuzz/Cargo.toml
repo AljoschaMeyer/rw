@@ -1,0 +1,65 @@
+
+[package]
+name = "rw-fuzz"
+version = "0.0.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+wrapper = "0.1.1"
+arbitrary = { git = "https://github.com/AljoschaMeyer/arbitrary", features = ["derive"] }
+
+[dependencies.rw]
+path = ".."
+features = ["alloc", "arbitrary"]
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "pipe"
+path = "fuzz_targets/pipe.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "bulk_produce_all"
+path = "fuzz_targets/bulk_produce_all.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "bulk_consume_all"
+path = "fuzz_targets/bulk_consume_all.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "scramble_consumer"
+path = "fuzz_targets/scramble_consumer.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "scramble_producer"
+path = "fuzz_targets/scramble_producer.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "into_vec"
+path = "fuzz_targets/into_vec.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "repeat"
+path = "fuzz_targets/repeat.rs"
+test = false
+doc = false

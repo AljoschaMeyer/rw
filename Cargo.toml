@@ -1,0 +1,18 @@
+[package]
+name = "rw"
+version = "0.1.0"
+authors = ["Aljoscha Meyer <mail@aljoscha-meyer.de>"]
+edition = "2018"
+
+[features]
+default = ["alloc", "arbitrary"]
+
+alloc = [ "maybe-std/alloc" ]
+std = [ "maybe-std/std" ]
+unstable = [ "maybe-std/unstable" ]
+
+[dependencies]
+maybe-std = "0.1.2"
+slice_n = { path = "../slice_n" }
+wrapper = "0.1.1"
+arbitrary = { git = "https://github.com/AljoschaMeyer/arbitrary", optional = true, features = ["derive"] }
